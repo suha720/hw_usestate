@@ -1,24 +1,52 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import TodoAdd from './components/todos/TodoAdd';
+import TodoList from './components/todos/TodoList';
+import { ITodoType } from './components/todos/types/todoType';
+
+const initialTodos: ITodoType[] = [];
 
 function App() {
+  // ts
+  // 1. 전체 목록
+  const [todos, setTodos] = useState(initialTodos);
+
+  // 2. 목록 추가하기
+  // setTodos 를 props 를 넘겨줘도 되지만 어딘가 안좋대
+  const handleTodoUpdate = (newTodo: ITodoType) => {
+    // 최신 todo 는 최상단으로
+    setTodos(prev => [newTodo, ...prev]);
+  };
+
+  // 2.1. completed 토글 함수
+  const onToggle = (id: string) => {
+    // 전달 받은 id 를 이용해서 map 으로 찾아서 completed 변경
+    const updatedTodos: ITodoType[] = todos.map(item =>
+      item.id === id ? { ...item, completed: !item.completed } : item,
+    );
+
+    setTodos(updatedTodos);
+  };
+
+  // 2.2 삭제 함수
+  const onDelete = (id: string): void => {
+    const arr = todos.filter(todo => todo.id !== id);
+    setTodos(arr);
+  };
+
+  const onEdit = (id: string, newTitle: string): void => {
+    const arr: ITodoType[] = todos.map(item =>
+      item.id === id ? { ...item, title: newTitle } : item,
+    );
+
+    setTodos(arr);
+  };
+
+  // tsx
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ width: 640, margin: '0 auto' }}>
+      <h1>과제를 시작합니다!!</h1>
+      <TodoAdd handleTodoUpdate={handleTodoUpdate}></TodoAdd>
+      <TodoList todos={todos} onToggle={onToggle} onDelete={onDelete} onEdit={onEdit}></TodoList>
     </div>
   );
 }

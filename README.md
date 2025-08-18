@@ -1,46 +1,22 @@
-# Getting Started with Create React App
+# Todo
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 오직 useState 만 사용해서 작성하기
 
-## Available Scripts
+- 삭제해도 되는 파일, package.json
 
-In the project directory, you can run:
+```json
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.7.0",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+```
 
-### `npm start`
+## props 넘길 때, 주의할 점
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- 받는 쪽에서 props의 type을 정의해줘야함
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 궁금한 것
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- TodoAdd.tsx 에서 `event`를 인자로 줬을 때, 타입을 정의해야 하는데 `<HTMLInputElement>` 이게 작성인 안됨
+  - 우회해서 해결했지만 다시 보기
