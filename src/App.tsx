@@ -43,10 +43,23 @@ function App() {
 
   // tsx
   return (
-    <div style={{ width: 640, margin: '0 auto' }}>
-      <h1>과제를 시작합니다!!</h1>
-      <TodoAdd handleTodoUpdate={handleTodoUpdate}></TodoAdd>
-      <TodoList todos={todos} onToggle={onToggle} onDelete={onDelete} onEdit={onEdit}></TodoList>
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4 dark:bg-neutral-950">
+      <div className="mx-auto w-full max-w-[640px] rounded-2xl border-2 border-cyan-400 bg-white/90 p-6 shadow-lg dark:bg-neutral-900 md:p-8">
+        <h1 className="text-center text-2xl font-bold tracking-tight text-cyan-700 md:text-3xl">
+          HW Tailwind 적용
+        </h1>
+        <div className="mt-6 flex justify-center">
+          <TodoAdd handleTodoUpdate={handleTodoUpdate}></TodoAdd>
+        </div>
+        <div className="mt-6 flex justify-center">
+          <TodoList
+            todos={todos}
+            onToggle={onToggle}
+            onDelete={onDelete}
+            onEdit={onEdit}
+          ></TodoList>
+        </div>
+      </div>
     </div>
   );
 }
