@@ -6,14 +6,25 @@ interface TodoListProps {
   onToggle: (id: string) => void;
   onDelete: (id: string) => void;
   onEdit: (id: string, newTitle: string) => void;
+  editId: string;
+  setEditId: React.Dispatch<React.SetStateAction<string>>;
+  handleCancle: () => void;
 }
 
-function TodoList({ todos, onToggle, onDelete, onEdit }: TodoListProps) {
-  const [editId, setEditId] = useState('');
+function TodoList({
+  todos,
+  onToggle,
+  onDelete,
+  onEdit,
+  editId,
+  setEditId,
+  handleCancle,
+}: TodoListProps) {
+  // const [editId, setEditId] = useState('');
   const [editTitle, setEditTitle] = useState('');
-  const handleCancle = () => {
-    setEditId('');
-  };
+  // const handleCancle = () => {
+  //   setEditId('');
+  // };
 
   // <HTMLInputElement> 이건 왜 안넣어지는거야
   const handleChange = (e: ChangeEvent) => {

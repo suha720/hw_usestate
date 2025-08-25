@@ -29,6 +29,15 @@ function TodoAdd({ handleTodoUpdate }: TodoAddProps) {
       setTitle('');
     }
   };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      if (title.trim()) {
+        handleAdd();
+      }
+    }
+  };
+
   return (
     <div className="w-full rounded-2xl border-2 border-cyan-400 bg-white/80 p-4 shadow-sm dark:bg-neutral-900/80">
       <div className="flex items-center gap-3">
@@ -36,6 +45,7 @@ function TodoAdd({ handleTodoUpdate }: TodoAddProps) {
           type="text"
           value={title}
           onChange={e => handleChange(e)}
+          onKeyDown={e => handleKeyDown(e)}
           placeholder="할 일을 입력하세요"
           className="flex-1 rounded-xl border border-dashed border-gray-300 bg-white px-4 py-2.5 text-sm focus:border-cyan-500 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-cyan-500/50 dark:border-cyan-700 dark:bg-neutral-800 dark:text-white md:text-base"
         />

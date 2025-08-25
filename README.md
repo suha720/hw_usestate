@@ -312,3 +312,43 @@ const onEdit = (id: string, newTitle: string): void => {
   "plugins": ["prettier-plugin-tailwindcss"],
 }
 ```
+
+# 08-25 코드 수정
+
+## App 파일
+
+### editId 관리하기
+
+- 상태관리
+
+```tsx
+const [editId, setEditId] = useState('');
+```
+
+- 취소 버튼 클릭시
+
+```tsx
+const handleCancle = () => {
+  setEditId('');
+};
+```
+
+## TodoAdd 파일
+
+- 키다운 추가
+
+```tsx
+const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  if (e.key === 'Enter') {
+    if (title.trim()) {
+      handleAdd();
+    }
+  }
+};
+```
+
+- input 태그 옵션
+
+```tsx
+onKeyDown={e => handleKeyDown(e)}
+```

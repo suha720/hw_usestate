@@ -9,12 +9,14 @@ function App() {
   // ts
   // 1. 전체 목록
   const [todos, setTodos] = useState(initialTodos);
+  const [editId, setEditId] = useState('');
 
   // 2. 목록 추가하기
   // setTodos 를 props 를 넘겨줘도 되지만 어딘가 안좋대
   const handleTodoUpdate = (newTodo: ITodoType) => {
     // 최신 todo 는 최상단으로
     setTodos(prev => [newTodo, ...prev]);
+    setEditId('');
   };
 
   // 2.1. completed 토글 함수
@@ -31,6 +33,7 @@ function App() {
   const onDelete = (id: string): void => {
     const arr = todos.filter(todo => todo.id !== id);
     setTodos(arr);
+    setEditId('');
   };
 
   const onEdit = (id: string, newTitle: string): void => {
@@ -39,6 +42,10 @@ function App() {
     );
 
     setTodos(arr);
+  };
+
+  const handleCancle = () => {
+    setEditId('');
   };
 
   // tsx
@@ -57,6 +64,9 @@ function App() {
             onToggle={onToggle}
             onDelete={onDelete}
             onEdit={onEdit}
+            editId={editId}
+            setEditId={setEditId}
+            handleCancle={handleCancle}
           ></TodoList>
         </div>
       </div>
